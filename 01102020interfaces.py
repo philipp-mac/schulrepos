@@ -28,19 +28,21 @@ class Auto(Motorisiert):
         
     def motorStarten(self):
         self.tankfüllung -= 5.0
-        print("noch im tank :", self.tankfüllung) 
+        print("motor laeuft, noch im tank :", self.tankfüllung, " %") 
                 
     def tanken(self, treibstoff):
         if treibstoff == self.treibstoffArt:
-            print("richtiger treibstoff")
+            print("richtiger treibstoff: ", self.treibstoffArt)
             self.tankfüllung = 100.0
         return self.tankfüllung
 
     
     def ladungAufnehmen(self, anzahl):
         if anzahl <= self.kapazitaet:
+            print("ladung aufgenommen")
             return True
         else:
+            print("ladung nicht aufgenommen")
             return False
         
     def hupen(self):
@@ -52,23 +54,24 @@ class Fahrer():
         super().__init__()
 
     def fahren(self):
-        auto.motorStarten()
-        auto.hupen()
+        self.auto.motorStarten()
+        self.auto.hupen()
         
     def boxStop(self):
-        auto.tanken("benzin")
-        auto.ladungAufnehmen(2)
+        self.auto.tanken("benzin")
+        self.auto.ladungAufnehmen(2)
                 
     
-auto = Auto()
-auto.motorStarten()
-auto.motorStarten()
-print(auto.ladungAufnehmen(5))
-print(auto.tanken("benzin"))
-print(auto.tanken("gas"))
+# auto = Auto()
+# auto.motorStarten()
+# auto.motorStarten()
+# print(auto.ladungAufnehmen(5))
+# print(auto.tanken("benzin"))
+# print(auto.tanken("gas"))
 
 print("-----------")
 
 fahrer = Fahrer()
 fahrer.fahren()
-print(fahrer.boxStop())
+fahrer.auto.hupen()
+fahrer.boxStop()
