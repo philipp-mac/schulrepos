@@ -55,7 +55,7 @@ class Fahrer():
 
     def fahren(self):
         self.auto.motorStarten()
-        self.auto.hupen()
+        #self.auto.hupen()
         
     def boxStop(self):
         self.auto.tanken("benzin")
