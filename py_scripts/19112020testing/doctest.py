@@ -1,7 +1,7 @@
+import doctest
 import abc
-import math
-import pytest
 import coverage
+import math
 
 class Figure(metaclass=abc.ABCMeta):
 
@@ -35,3 +35,11 @@ class Circle(Figure):
 
     def doubleSize(self):
         self.radius *= 2
+
+'''
+>>> square = Square(5)
+>>> s.area()
+30
+'''
+
+doctest.testmod()
