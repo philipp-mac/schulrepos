@@ -19,9 +19,22 @@ class Square(Figure):
         self.sidelen = sidelen
 
     def area(self):
+        '''
+        >>> square = Square(5)
+        >>> square.area()
+        25
+        '''
         return self.sidelen * self.sidelen
 
     def doubleSize(self):
+        '''
+        >>> square = Square(5)
+        >>> square.area()
+        25
+        >>> square.doubleSize()
+        >>> square.area()
+        100
+        '''
         self.sidelen *= 2
 
 
@@ -31,15 +44,23 @@ class Circle(Figure):
         self.radius = radius
 
     def area(self):
+        '''
+        >>> circle = Circle(4)
+        >>> int(circle.area())
+        50
+        '''
         return math.pi * ( self.radius * self.radius)
 
     def doubleSize(self):
+        '''
+        >>> circle = Circle(4)
+        >>> int(circle.area())
+        50
+        >>> circle.doubleSize()
+        >>> int(circle.area())
+        201
+        '''
         self.radius *= 2
 
-'''
->>> square = Square(5)
->>> s.area()
-30
-'''
 
 doctest.testmod()
