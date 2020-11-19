@@ -12,7 +12,7 @@ class SquareTest(unittest.TestCase):
     def testDoubleSize(self):
         self.square.doubleSize()
         self.assertTrue(self.square.sidelen == 8)
-        self.assertEquals(self.square.area() == 64)
+        self.assertEqual(self.square.area(), 64)
 
 class CircleTest(unittest.TestCase):
     def setUp(self):
