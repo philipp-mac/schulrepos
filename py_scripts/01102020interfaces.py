@@ -75,3 +75,5 @@ fahrer = Fahrer()
 fahrer.fahren()
 fahrer.auto.hupen()
 fahrer.boxStop()
+
+print("-----------")
