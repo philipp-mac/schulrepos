@@ -25,12 +25,23 @@ def findTwo(list, targetNum):
             return list[num], list[list.index(needed)]
 
 def findThree(list, targetNum):
-    pass
-            
+    for lowEnd in range(0, len(list)):
+        mid = lowEnd + 1
+        topEnd = len(list) - 1
+        while (mid < topEnd):
+            print(lowEnd, mid, topEnd)
+            print(list[lowEnd] + list[mid] + list[topEnd])
+            if (list[lowEnd] + list[mid] + list[topEnd] == targetNum):
+                return [list[lowEnd], list[mid], list[topEnd]]
+            elif (list[lowEnd] + list[mid] + list[topEnd] < targetNum):
+                mid += 1
+            elif (list[lowEnd] + list[mid] + list[topEnd] > targetNum):
+                topEnd -= 1
+    return False
 
 bubbleSort(expenses)
-result = findTwo(expenses, 2020)
-print(result[0] * result[1])
+# result = findTwo(expenses, 2020)
+# print(result[0] * result[1])
 
 resultPart2 = findThree(expenses, 2020)
-print()
+print(resultPart2[0] * resultPart2[1] * resultPart2[2])
