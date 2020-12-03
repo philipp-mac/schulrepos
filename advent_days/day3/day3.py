@@ -10,9 +10,6 @@ def traverseRouteAndCountTrees(x, y, route):
         currentx += x
     return treesEncountered
 
-
-# for item in range(len(route)):
-#     print(route[item], "\n")   
 print("for right 1, down 1: ",traverseRouteAndCountTrees(1, 1, route))
 print("for right 3, down 1: ",traverseRouteAndCountTrees(3, 1, route))
 print("for right 5, down 1: ",traverseRouteAndCountTrees(5, 1, route))
