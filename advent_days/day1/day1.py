@@ -44,4 +44,4 @@ bubbleSort(expenses)
 # print(result[0] * result[1])
 
 resultPart2 = findThree(expenses, 2020)
-print(resultPart2[0] * resultPart2[1] * resultPart2[2])
+print(resultPart2[0] * resultPart2[1] * resultPart2)
