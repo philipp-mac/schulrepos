@@ -83,6 +83,6 @@ def validEcl(field):
 def validPid(field):
     return field.isnumeric() and len(field) == 9
 
-# print(countValidPassports(batch, ["byr","iyr","eyr","hgt","hcl","ecl","pid"], 1))
+print(countValidPartOne(batch, ["byr","iyr","eyr","hgt","hcl","ecl","pid"]))
 result  = countValidPartTwo(batch, ["byr","iyr","eyr","hgt","hcl","ecl","pid"]) - 1 #einen drüber
 print(result)
