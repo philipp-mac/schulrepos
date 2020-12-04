@@ -1,6 +1,6 @@
 import re
 
-with open("day4alternative.md") as source:
+with open("day4input.md") as source:
     batch = source.read()
 batch = batch.split("\n\n")
 batch = [re.split("[:\n ]", item) for item in batch]
@@ -9,7 +9,6 @@ def countValidPartOne(batch, requiredFields):
     validPassports = 0
     for passport in batch:
         fieldsMatched = 0
-        validatedFields = 0
         for item in passport:
             if item in requiredFields:
                 fieldsMatched += 1
@@ -25,8 +24,11 @@ def countValidPartTwo(batch, requiredFields):
             if passport[item] in requiredFields:
                 if validateContent(passport[item], passport[item + 1]):
                     validatedFields += 1
-                if validatedFields == 7:
-                    validPassports += 1
+                else:
+                    break
+            if validatedFields == 7:
+                validPassports += 1
+                break
     return validPassports
 
 def validateContent(field, content):
@@ -67,7 +69,7 @@ def validHgt(field):
         return False
 
 def validHcl(field):
-    return re.match("^[#][0-9a-f]{6}", field)
+    return re.match("^[#][0-9a-f]{6}", field) != None
 
 def validEcl(field):
     return re.match("[amb|blu|brn|gry|grn|hzl|oth]{3}", field) != None and len(field) == 3
