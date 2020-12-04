@@ -1,4 +1,4 @@
-import re, copy
+import re
 
 with open("day4input.md") as source:
     batch = source.read()
@@ -6,20 +6,32 @@ batch = batch.split("\n\n")
 batch = [re.split("[:\n ]", item) for item in batch]
 
 
-def countValidPassports(batch, requiredFields, part):
+def countValidPartOne(batch, requiredFields):
     validPassports = 0
     for passport in batch:
+        print("------")
+        fieldsMatched = 0
+        validatedFields = 0
+        for item in passport:
+            if item in requiredFields:
+                fieldsMatched += 1
+        if fieldsMatched >= 7:
+            validPassports += 1
+    return validPassports
+
+
+def countValidPartTwo(batch, requiredFields):
+    validPassports = 0
+    for passport in batch:
+        print("------")
         fieldsMatchedAndValid = 0
+        validatedFields = 0
         for item in range(len(passport)):
             if passport[item] in requiredFields:
-                if part == 1:
-                    fieldsMatchedAndValid += 1
-                else:
-                    ##item is the category, item + 1 is the actual content for part 2
-                    if validateContent(passport[item], passport[item + 1]):
-                        fieldsMatchedAndValid += 1
-        if fieldsMatchedAndValid >= 7:
-            validPassports += 1
+                if validateContent(passport[item], passport[item + 1]):
+                    validatedFields += 1
+                if validatedFields >= 7:
+                    validPassports += 1
     return validPassports
 
 
@@ -51,8 +63,7 @@ def validEyr(field):
     return len(field) == 4 and int(field) <= 2030 and int(field) >= 2020
 
 def validHgt(field):
-    fieldCopy = copy.deepcopy(field)
-    if len(fieldCopy) < 4:
+    if len(field) < 4 or len(field) > 6:
         return False
     unit = field[len(field) - 2:]
     number = int(field[0:len(field) - 2])
@@ -63,16 +74,17 @@ def validHgt(field):
     else: 
         return False
 
+#check
 def validHcl(field):
-    print(field)
-    print(re.match("^[#][0-9a-f]{6}", field))
     return re.match("^[#][0-9a-f]{6}", field)
 
+#check
 def validEcl(field):
-    return re.match("[amb|blu|brn|gry|grn|hzl|oth]{3}", field) and len(field) == 3
+    return re.match("[amb|blu|brn|gry|grn|hzl|oth]{3}", field) != None and len(field) == 3
 
 def validPid(field):
     return field.isnumeric() and len(field) == 9
 
-print(countValidPassports(batch, ["byr","iyr","eyr","hgt","hcl","ecl","pid"], 1))
-# print(countValidPassports(batch, ["byr","iyr","eyr","hgt","hcl","ecl","pid"], 2))
+# print(countValidPassports(batch, ["byr","iyr","eyr","hgt","hcl","ecl","pid"], 1))
+result  = countValidPartTwo(batch, ["byr","iyr","eyr","hgt","hcl","ecl","pid"]) - 1 #einen drüber
+print(result)
