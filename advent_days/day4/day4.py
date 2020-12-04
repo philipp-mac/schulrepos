@@ -18,11 +18,9 @@ def countValidPartOne(batch, requiredFields):
             validPassports += 1
     return validPassports
 
-
 def countValidPartTwo(batch, requiredFields):
     validPassports = 0
     for passport in batch:
-        fieldsMatchedAndValid = 0
         validatedFields = 0
         for item in range(len(passport)):
             if passport[item] in requiredFields:
@@ -31,7 +29,6 @@ def countValidPartTwo(batch, requiredFields):
                 if validatedFields >= 7:
                     validPassports += 1
     return validPassports
-
 
 def validateContent(field, content):
     if field == "byr":
@@ -49,8 +46,6 @@ def validateContent(field, content):
     elif field == "pid":
         return validPid(content)
             
-
-
 def validByr(field):
     return len(field) == 4 and int(field) <= 2002 and int(field) >= 1920
 
@@ -72,17 +67,14 @@ def validHgt(field):
     else: 
         return False
 
-#check
 def validHcl(field):
     return re.match("^[#][0-9a-f]{6}", field)
 
-#check
 def validEcl(field):
     return re.match("[amb|blu|brn|gry|grn|hzl|oth]{3}", field) != None and len(field) == 3
 
 def validPid(field):
     return field.isnumeric() and len(field) == 9
 
-print(countValidPartOne(batch, ["byr","iyr","eyr","hgt","hcl","ecl","pid"]))
-result  = countValidPartTwo(batch, ["byr","iyr","eyr","hgt","hcl","ecl","pid"]) - 1 #einen drüber
-print(result)
+print("result for part one: ", countValidPartOne(batch, ["byr","iyr","eyr","hgt","hcl","ecl","pid"]))
+print("result for part two: ", countValidPartTwo(batch, ["byr","iyr","eyr","hgt","hcl","ecl","pid"]) -1)
