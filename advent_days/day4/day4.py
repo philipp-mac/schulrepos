@@ -9,7 +9,6 @@ batch = [re.split("[:\n ]", item) for item in batch]
 def countValidPartOne(batch, requiredFields):
     validPassports = 0
     for passport in batch:
-        print("------")
         fieldsMatched = 0
         validatedFields = 0
         for item in passport:
@@ -23,7 +22,6 @@ def countValidPartOne(batch, requiredFields):
 def countValidPartTwo(batch, requiredFields):
     validPassports = 0
     for passport in batch:
-        print("------")
         fieldsMatchedAndValid = 0
         validatedFields = 0
         for item in range(len(passport)):
