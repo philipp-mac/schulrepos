@@ -1,10 +1,9 @@
 import re
 
-with open("day4input.md") as source:
+with open("day4alternative.md") as source:
     batch = source.read()
 batch = batch.split("\n\n")
 batch = [re.split("[:\n ]", item) for item in batch]
-
 
 def countValidPartOne(batch, requiredFields):
     validPassports = 0
@@ -26,7 +25,7 @@ def countValidPartTwo(batch, requiredFields):
             if passport[item] in requiredFields:
                 if validateContent(passport[item], passport[item + 1]):
                     validatedFields += 1
-                if validatedFields >= 7:
+                if validatedFields == 7:
                     validPassports += 1
     return validPassports
 
@@ -77,4 +76,4 @@ def validPid(field):
     return field.isnumeric() and len(field) == 9
 
 print("result for part one: ", countValidPartOne(batch, ["byr","iyr","eyr","hgt","hcl","ecl","pid"]))
-print("result for part two: ", countValidPartTwo(batch, ["byr","iyr","eyr","hgt","hcl","ecl","pid"]) -1)
+print("result for part two: ", countValidPartTwo(batch, ["byr","iyr","eyr","hgt","hcl","ecl","pid"]) - 1)
