@@ -4,5 +4,6 @@
 
 
 #PY
+*/__pycache__
 /htmlcov
 .coverage
