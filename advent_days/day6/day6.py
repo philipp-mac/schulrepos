@@ -30,6 +30,6 @@ def findQuestionsWithAllMatches(data):
         sumAnswers += len(matches)
     return sumAnswers
 
-print(findCountOfDistinctAnswers(data))
+print("part one: ", findCountOfDistinctAnswers(data))
 print("part two: ", findQuestionsWithAllMatches(data))
                 
