@@ -25,7 +25,6 @@ function execute(instructions, visited){
                 index = Math.abs(index + number)
                 break;
         }
-        console.log("------------");
     }
     return accumulator
 }
