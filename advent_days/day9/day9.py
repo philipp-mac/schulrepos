@@ -1,34 +1,7 @@
-example_input = '''
-35
-20
-15
-25
-47
-40
-62
-55
-65
-95
-102
-117
-150
-182
-127
-219
-299
-277
-309
-576
-'''
-
 with open("day9input.md") as source:
     data = source.read()
 data = data.split("\n")
 data = [int(item) for item in data if item.isnumeric()]
-
-
-example_input = example_input.split("\n")
-example_input = [int(item) for item in example_input if item.isnumeric()]
 
 def calcValid(preamble):
     result = []
@@ -39,16 +12,12 @@ def calcValid(preamble):
     return result
 
 def validated(item, validList):
-    if item not in validList:
-        return False
-    else:
-        return True
+    return item in validList
 
 def part2(nums, soughtIndex):
     for i in range(len(nums)):
         delimiter = 1
         while (delimiter < 50):
-            print(delimiter, " in while")
             preamble = nums[i: i + delimiter]
             attempt = sum(preamble)
             if nums[soughtIndex] == attempt:
@@ -63,10 +32,13 @@ def part2(nums, soughtIndex):
 
 def solve(nums, preambleLen):
     secondPart = True
+    ##part1
     for i in range(preambleLen, len(nums)):
         if not validated(nums[i], calcValid(nums[i - preambleLen: i])):
+            ##part2 return
             if secondPart:
                 return part2(nums, i)
+            ##part 1 return
             return nums[i]
 
 print(solve(data, 25))
