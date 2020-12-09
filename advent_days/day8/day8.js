@@ -18,6 +18,8 @@ function execute(instructions, visited){
         if (instructions[index] === undefined || instructions === undefined || instructions[index][0] === undefined){
             console.log(" UNDEFINED ,", instructions);
         }
+
+        //something arrives undefined here, but i cant catch it for some reason
         let command = instructions[index][0]
         let number = Number(instructions[index][1])
         switch (command){
