@@ -1,5 +1,4 @@
 const fs = require('fs');
-const { on } = require('process');
 
 let data = fs.readFileSync('day8input.md', 'utf8');
 const baseInstructions = data.split(/\r?\n/).map(i => i.split(" "))
