@@ -20,7 +20,6 @@ def bubbleSort(list):
 def findTwo(list, targetNum):
     for num in range(0, len(list)):
         needed =  2020 - list[num]
-        print(list[num], needed)
         if needed in list[num+1:]:
             return list[num], list[list.index(needed)]
 
@@ -29,8 +28,6 @@ def findThree(list, targetNum):
         mid = lowEnd + 1
         topEnd = len(list) - 1
         while (mid < topEnd):
-            print(lowEnd, mid, topEnd)
-            print(list[lowEnd] + list[mid] + list[topEnd])
             if (list[lowEnd] + list[mid] + list[topEnd] == targetNum):
                 return [list[lowEnd], list[mid], list[topEnd]]
             elif (list[lowEnd] + list[mid] + list[topEnd] < targetNum):

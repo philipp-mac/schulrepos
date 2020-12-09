@@ -3,7 +3,6 @@ with open("day6input.md") as source:
 data = data.split("\n\n")
 data = [item.split("\n") for item in data]
 
-
 def findCountOfDistinctAnswers(data):
     sumAnswers = 0
     for group in data:

@@ -10,20 +10,14 @@ def passwordIsValid(policy, password):
     minOcc = int(conditionList[0])
     maxOcc = int(conditionList[1])
     wantedChar = conditionList[2]
-    if password.count(wantedChar) >= minOcc and password.count(wantedChar) <= maxOcc:
-        return True
-    else:
-        return False
+    return password.count(wantedChar) >= minOcc and password.count(wantedChar) <= maxOcc
 
 def passwordIsValidPartTwo(policy, password):
     conditionList = re.split('[- ]', policy)
     indexOne = int(conditionList[0])
     indexTwo = int(conditionList[1])
     wantedChar = conditionList[2]
-    if bool(password[indexOne] == wantedChar) != bool(password[indexTwo] == wantedChar):
-        return True
-    else:
-        return False
+    return bool(password[indexOne] == wantedChar) != bool(password[indexTwo] == wantedChar)
 
 def checkRecords(list): 
     global validPasswords
