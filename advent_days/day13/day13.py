@@ -8,6 +8,7 @@ lines = data[1].split(",")
 buslines = [int(item) for item in lines if item.isnumeric()]
 buslines2 = [item for item in lines]
 
+
 def getDepartures(buslines):
     departureDict = {}
     for bus in buslines:
@@ -29,12 +30,22 @@ def getClosest(maxWait, departureDict):
     return (closestAndID[0] - maxWait) * closestAndID[1]   # part 1          
 
 
-def getCorrectOffsets(buslines):
-    offsets = []
-    lastValid = 0
-    for bus in range(len(buslines)):
-        pass
-        
+# def findCorrectOffsets(buslines):
+#     offsets = []
+#     offset = 0
+#     for bus in range(len(buslines)):
+#         if buslines[bus].isnumeric():
+#             offsets.append(offset)
+#             offset = 0
+#         elif buslines[bus] == "x":
+#             offset += 1
+#     return offsets[1:]
 
 
-# print(getClosest(maxWait, getDepartures(buslines)))
+# def findCorrectOrder(buslines, offsets):
+#     for 
+#     return buslines, offsets
+
+
+print(getClosest(maxWait, getDepartures(buslines)))
+# print(findCorrectOrder(buslines, findCorrectOffsets(buslines2)))
