@@ -3,12 +3,12 @@ from time import perf_counter
 startingnums = (1,0,15,2,10,13)
 
 def addOrUpdateDicts(number, mdict, tdict, i):
-    if number not in mdict.keys():
-        mdict.update({number: [i]})
-        tdict.update({number: 1})
-    else:
+    if number in mdict.keys():
         mdict[number] = [mdict[number][len(mdict[number]) - 1], i]
         tdict[number] += 1
+    else:
+        mdict.update({number: [i]})
+        tdict.update({number: 1})
 
 def play(startingnums, limit):
     mentions = {}
@@ -21,11 +21,10 @@ def play(startingnums, limit):
         timesMentioned[startingnums[i]] = 1
         lastNumber = startingnums[i]
 
-    print(" ENTERING LOOP \n")
     for turn in range(len(startingnums), limit):
         
         if turn % 1000000 == 0:
-            print("turn ", turn)
+            print("~~~ Turn Nr. ", turn, "~~~")
             timeStop = perf_counter()
             print("time elapsed: approx. ", timeStop - timeStart)
 
