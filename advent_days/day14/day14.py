@@ -13,7 +13,7 @@ def bitsToListOfMaskLength(mask, bits):
         return list(bits)
 
 
-def appylMask(mask, bits):
+def applyMask(mask, bits):
     bits = bitsToListOfMaskLength(mask, bits)
     for bit in range(len(mask)):
         if mask[bit] != "X":
@@ -75,7 +75,7 @@ def run(data:list, mem:dict, part1:bool):
 
             #self-explanatory
             if part1:
-                mem[memAdress] = int(appylMask(bitMask, bits), base=2)
+                mem[memAdress] = int(applyMask(bitMask, bits), base=2)
 
             else:
                 mem = setMem(findMemoryLocations(bitMask, bin(memAdress)[2:]), bits, mem)
