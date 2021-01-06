@@ -2,9 +2,7 @@ from collections import defaultdict
 import re
 
 # rules = defaultdict()
-validRanges = []
 tickets = []
-invalidFields = []
 
 def parseLine(line, mode):
     ## specific rules parser, may be needed later 
@@ -22,7 +20,9 @@ def parseLine(line, mode):
         if numbers != []:
             tickets.append(numbers)
 
-def readInput():
+def readValidRangesFromInput():
+    global validRanges
+    validRanges = []
     with open("day16input.md") as source:
         modes = {0: "rule", 1: "myTicket", 2: "otherTickets"}
         mode = 0
@@ -30,6 +30,7 @@ def readInput():
             if len(line) == 1:  
                 mode += 1
             parseLine(line, modes[mode])
+    return validRanges
 
 
 def formatValidRanges(validRanges):
@@ -46,10 +47,12 @@ def valid(value):
     return False
 
 def getInvalidAllRules(tickets):
+    invalidFields = []
     for ticket in tickets:
         for value in ticket:
             if not valid(value):
                 invalidFields.append(value)
+    return invalidFields
 
 def calcScanningError(invalidFields):
     result = 0
@@ -57,7 +60,7 @@ def calcScanningError(invalidFields):
         result += item
     return result
 
-readInput()
+validRanges = readValidRangesFromInput()
 validRanges = formatValidRanges(validRanges)
-getInvalidAllRules(tickets)
+invalidFields = getInvalidAllRules(tickets)
 print(calcScanningError(invalidFields))
