@@ -60,6 +60,9 @@ def calcScanningError(invalidFields):
         result += item
     return result
 
+def figureOutRanges(tickets):
+    pass
+
 validRanges = readValidRangesFromInput()
 validRanges = formatValidRanges(validRanges)
 invalidFields = getInvalidAllRules(tickets)
