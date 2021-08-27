@@ -54,7 +54,6 @@ def end_game(player_name):
     conn.close()
 
 
-
 def game_loop():
     """
     Actual game execution loop
