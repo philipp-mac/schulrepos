@@ -91,7 +91,6 @@ def prepare_db():
 
     # 2) Generate a random winning number
     winning_num = random.randint(0, 100)
-    print(winning_num, "IS NUM")
     print("Advanced AI chose a random number between 1 and 100.... \n")
 
     # 3) Make entry in db for this playery
