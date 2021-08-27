@@ -1,5 +1,6 @@
-CREATE TABLE IF NOT EXISTS guess(
+CREATE TABLE IF NOT EXISTS player(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    guess INTEGER NOT NULL,
-    correct INTEGER NOT NULL
+    player_name text,
+    guesses INTEGER NOT NULL,
+    correctnumber INTEGER
 );
