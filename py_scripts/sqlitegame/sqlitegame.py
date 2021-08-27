@@ -12,8 +12,8 @@ def update_data(player_name: str, guesses: int):
     :param bool: if the guess was correct
     """
     curs = conn.cursor()
-    curs.execute(f"UPDATE player SET guesses = ? WHERE player_name = ?", (player_name, guesses))
-    conn.commit()
+    curs.execute(f"UPDATE player SET guesses = ? WHERE player_name = ?", (player_name, guesses,))
+    curs.commit()
 
 def get_guess():
     """
