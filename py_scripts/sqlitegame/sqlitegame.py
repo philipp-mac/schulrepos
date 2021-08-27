@@ -1,4 +1,3 @@
-from os import curdir
 import sqlite3, random
 
 # Verbindung zur DB aufbauen
@@ -48,7 +47,7 @@ def end_game(player_name):
     cursor.execute(f"SELECT player_name, guesses FROM player ORDER BY guesses ASC")
     rows = cursor.fetchall()
     print("The top 10 players are: \n")
-    for r in range(10):
+    for r in range(min(len(rows), 10)):
         print(rows[r][0] , f" with {rows[r][1]} guesses! \n")
 
     # close database connection
