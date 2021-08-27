@@ -79,8 +79,12 @@ def game_loop():
                 update_data(player_name, guesses)
                 end_game(player_name)
                 break
+                
+            else:
+                print("Incorrect, please guess again..")
 
-        # 7) Ask user if they want to keep playing
+
+        # Ask user if they want to keep playing
         continue_playing = input("Continue playing (y/n)? \n") == "y"
 
 def prepare_db():
@@ -91,6 +95,8 @@ def prepare_db():
 
     # 2) Generate a random winning number
     winning_num = random.randint(0, 100)
+    if input("Wanna cheat? Enter the password?") == "tbs1":
+        print(winning_num, " is the winning number")
     print("Advanced AI chose a random number between 1 and 100.... \n")
 
     # 3) Make entry in db for this playery
