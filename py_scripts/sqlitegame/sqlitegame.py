@@ -55,9 +55,6 @@ def end_game(player_name):
     for r in range(min(len(rows), 10)):
         print(r, " - ", rows[r][0] , f" with {rows[r][1]} guesses! ")
 
-    # close database connection
-    conn.close()
-
 
 def game_loop():
     """
@@ -111,3 +108,5 @@ def prepare_db():
 
 prepare_db()
 game_loop()
+# close database connection
+conn.close()
