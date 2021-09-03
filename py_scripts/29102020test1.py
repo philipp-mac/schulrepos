@@ -5,7 +5,7 @@ def all_bigger_five(liste):
         return False
         
     for item in liste:
-        if type(item) is not int and type(item) is not float:
+        if type(item) is not int or type(item) is not float:
             return False
         if item < 6:
             return False

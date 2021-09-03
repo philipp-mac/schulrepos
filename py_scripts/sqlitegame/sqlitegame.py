@@ -62,6 +62,7 @@ def game_loop():
     """
     continue_playing = True
     while continue_playing:
+        prepare_db()
         guesses = 0
 
         # Loop through guesses 
@@ -79,7 +80,6 @@ def game_loop():
                 update_data(player_name, guesses)
 
                 # finally, output player score and highscores
-                end_game(player_name)
                 break
                 
             else:
@@ -88,6 +88,8 @@ def game_loop():
 
         # Ask user if they want to keep playing
         continue_playing = input("Continue playing (y/n)? \n") == "y"
+    end_game(player_name)
+
 
 def prepare_db():
     global player_name, winning_num, player_id
@@ -106,7 +108,6 @@ def prepare_db():
     curs.execute("INSERT INTO player (player_name, guesses, correctnumber) VALUES (?, ?, ?)", (player_name, 0, winning_num))
     conn.commit()
 
-prepare_db()
 game_loop()
 # close database connection
 conn.close()
